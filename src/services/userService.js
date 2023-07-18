@@ -1,6 +1,8 @@
 import { UserModel } from "../models/index.js";
 import mongoose from "mongoose";
-import Jwt from "jsonwebtoken";
+import { UserStatuses } from "../constants/user-constants.js";
+import TokenService from "./token.service.js";
+import bcrypt from "bcrypt";
 
 export const UserService = {
   get: () => {
@@ -9,17 +11,25 @@ export const UserService = {
   getById: (id) => {
     return UserModel.findById(id);
   },
-  createUser: (data) => {
-    return UserModel.create(data);
-  },
-  createLogin: async (data) => {
-    const user = await UserModel.findOne(data);
-    if (!user) return res.send(401).send("Invalid email or password");
-    delete user._doc.password;
-    const token = Jwt.sign(user._doc, "my_temporary_secret", {
-      expiresIn: "1h",
+  createUser: async (data) => {
+    // data.status = UserStatuses.REGISTERED;
+    data.password = await bcrypt.hash(data.password, 10);
+    return UserModel.create(data).then((user) => {
+      delete user._doc.password;
+      return user._doc;
     });
-    return token;
+  },
+  createLogin: async ({ email, password }) => {
+    const isExists = await UserModel.findOne({ email });
+    if (!isExists) throw new Error("User not found");
+    const isMatch = await bcrypt.compare(password, isExists.password);
+    if (!isMatch) throw new Error("Password is incorrect");
+    const token = await TokenService.createJwtToken(isExists._doc);
+    return {
+      token,
+      email: isExists.email,
+      isVerified: isExists.email === UserStatuses.VERIFIED,
+    };
   },
 
   getAllStreamsByUserId: async (_id) => {

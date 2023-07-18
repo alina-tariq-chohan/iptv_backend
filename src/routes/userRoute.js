@@ -2,7 +2,7 @@ import express from "express";
 import { schema } from "../validations/index.js";
 import { authenticate } from "../middlewares/authenticate.js";
 import { UserController } from "../controllers/index.js";
-import { validate } from "../middlewares/validate.js";
+import { validate } from "../middlewares/extra-validatecode.js";
 
 const UserRouter = express.Router();
 

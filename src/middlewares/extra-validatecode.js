@@ -3,7 +3,7 @@ import pkg from "joi";
 const { object } = pkg;
 import { httpResponse } from "../utils/index.js";
 
-const validate = (schema) => (req, res, next) => {
+export const validate = (schema) => (req, res, next) => {
   const validSchema = pick(schema, ["params", "query", "body"]);
   const object = pick(req, Object.keys(validSchema));
   const { value, error } = Joi.compile(validSchema)
@@ -27,5 +27,3 @@ const pick = (object, keys) => {
     return obj;
   }, {});
 };
-
-export default validate;
