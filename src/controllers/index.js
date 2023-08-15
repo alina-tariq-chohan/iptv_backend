@@ -1,9 +1,8 @@
 // export * from "./user.controller.js";
-export * from "./episodeController.js";
-export * from "./fileController.js";
-export * from "./genre-seriesController.js";
-export * from "./genreController.js";
-export * from "./seasonController.js";
-export * from "./seriesController.js";
-export * from "./streamController.js";
-export * from "./userController.js";
+export * from "./episode.controller.js";
+export * from "./file.controller.js";
+export * from "./genre.controller.js";
+export * from "./season.controller.js";
+export * from "./series.controller.js";
+export * from "./stream.controller.js";
+export * from "./user.controller.js";

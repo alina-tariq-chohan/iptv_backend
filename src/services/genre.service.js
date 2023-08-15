@@ -80,8 +80,8 @@ export const GenreService = {
   create: async (data) => {
     return GenreModel.create(data);
   },
-  update: async ({ id }) => {
-    return GenreModel.findByIdAndUpdate(id);
+  update: async (id, data) => {
+    return GenreModel.findByIdAndUpdate(id, data);
   },
   delete: async (id) => {
     return GenreModel.findByIdAndDelete(id);

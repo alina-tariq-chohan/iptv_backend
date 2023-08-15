@@ -2,8 +2,17 @@ import { SeasonModel } from "../models/index.js";
 import mongoose from "mongoose";
 
 export const SeasonService = {
-	get: async (req, res) => {
-		return SeasonModel.find().populate("series_id");
+	get: () => {
+		return SeasonModel.aggregate([
+			{
+				$lookup: {
+					from: "series",
+					localField: "series_id",
+					foreignField: "_id",
+					as: "series",
+				},
+			},
+		]);
 	},
 	getById: async (id) => {
 		return SeasonModel.findById(id);

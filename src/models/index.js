@@ -1,9 +1,9 @@
 // export * from "./user.model.js";
-export * from "./episodeModel.js";
-export * from "./fileModel.js";
-export * from "./genre-seriesModel.js";
-export * from "./genreModel.js";
-export * from "./seasonModel.js";
-export * from "./seriesModel.js";
-export * from "./streamModel.js";
-export * from "./userModel.js";
+export * from "./episode.model.js";
+export * from "./file.model.js";
+export * from "./genre-series.model.js";
+export * from "./genre.model.js";
+export * from "./season.model.js";
+export * from "./series.model.js";
+export * from "./stream.model.js";
+export * from "./user.model.js";

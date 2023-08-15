@@ -21,6 +21,7 @@ export const StreamController = {
 
   create: async (req, res) => {
     try {
+      req.body.user_id = req.user._id
       const result = await StreamService.create(req.body);
       res.status(200).json(result);
     } catch (err) {

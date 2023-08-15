@@ -1,5 +1,5 @@
 import { SeriesModel } from "../models/index.js";
-import { GenreSeriesService } from "./genre-seriesServices.js";
+import { GenreSeriesService } from "./genre-series.services.js";
 import mongoose from "mongoose";
 
 export const SeriesService = {
@@ -36,6 +36,7 @@ export const SeriesService = {
 		await GenreSeriesService.createMany(genreSeries);
 		return series;
 	},
+
 	getAllSeasonsOfSeriesBySeriesId: async (_id) => {
 		const result = await SeriesModel.aggregate([
 			{

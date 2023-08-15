@@ -1,5 +1,5 @@
 import express from "express";
-import { EpisodeController } from "../controllers/episodeController.js";
+import { EpisodeController } from "../controllers/episode.controller.js";
 
 const EpisodeRouter = express.Router();
 
