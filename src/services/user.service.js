@@ -82,8 +82,8 @@ export const UserService = {
     return result;
   },
 
-  update: ({ id, ...rest }) => {
-    return UserModel.findByIdAndUpdate(id, rest);
+  update: ({ id, data }) => {
+    return UserModel.findByIdAndUpdate(id, data);
   },
   delete: (id) => {
     return UserModel.findByIdAndDelete(id);

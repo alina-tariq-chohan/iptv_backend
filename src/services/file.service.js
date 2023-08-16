@@ -10,8 +10,8 @@ export const FileService = {
   create: async (data) => {
     return FileModel.create(data);
   },
-  update: async ({ id, ...rest }) => {
-    return FileModel.findByIdAndUpdate(id, rest);
+  update: async ({ id, data }) => {
+    return FileModel.findByIdAndUpdate(id, data);
   },
   delete: async (id) => {
     return FileModel.findByIdAndDelete(id);
