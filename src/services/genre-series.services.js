@@ -19,4 +19,7 @@ export const GenreSeriesService = {
   delete: async (id) => {
     return GenreSeriesModel.findByIdAndDelete(id);
   },
+  deleteByFilter: async (filter) => {
+    return GenreSeriesModel.deleteMany(filter);
+  },
 };
