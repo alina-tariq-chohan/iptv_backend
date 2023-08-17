@@ -36,7 +36,7 @@ export const SeasonService = {
     ]);
     return result;
   },
-  update: async ({ id, data }) => {
+  update: async (id, data) => {
     return SeasonModel.findByIdAndUpdate(id, data);
   },
   delete: async (id) => {

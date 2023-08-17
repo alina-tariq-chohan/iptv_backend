@@ -27,7 +27,7 @@ export const EpisodeService = {
     ]);
     return result;
   },
-  update: ({ id, data }) => {
+  update: (id, data) => {
     return EpisodeModel.findByIdAndUpdate(id, data);
   },
   delete: (id) => {

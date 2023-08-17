@@ -187,7 +187,7 @@ export const StreamService = {
 
     return genreSeriesSeasonEpisode;
   },
-  update: ({ id, data }) => {
+  update: (id, data) => {
     return StreamModel.findByIdAndUpdate(id, data);
   },
   delete: (id) => {
